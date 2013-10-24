@@ -4,6 +4,11 @@ from socialregistration.views import Logout, Setup
 
 urlpatterns = patterns('',)
 
+if 'socialregistration.contrib.atlassianid' in settings.INSTALLED_APPS:
+    urlpatterns = urlpatterns + patterns('',
+        url(r'^atlassianid/', include('socialregistration.contrib.atlassianid.urls',
+            namespace='atlassianid')))
+
 if 'socialregistration.contrib.openid' in settings.INSTALLED_APPS:
     urlpatterns = urlpatterns + patterns('',
         url(r'^openid/', include('socialregistration.contrib.openid.urls',

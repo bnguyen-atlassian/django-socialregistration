@@ -57,3 +57,8 @@ class Client(object):
         for the duration of the authentication/authorization process.
         """
         raise NotImplementedError
+        
+    @classmethod
+    def allow_signups(cls):
+        return True
+    

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core.urlresolvers import reverse
 from openid.consumer import consumer
@@ -10,6 +11,9 @@ import urlparse
 AX_ATTRS = {
     'email': 'http://axschema.org/contact/email',
 }
+
+ALLOW_OPENID_SIGNUPS = getattr(settings, 'SOCIALREGISTRATION_ALLOW_OPENID_SIGNUPS',
+    True)
 
 class OpenIDClient(Client):
     def __init__(self, session_data, endpoint_url, ax_attrs=None, sreg_attrs=None):
@@ -81,3 +85,7 @@ class OpenIDClient(Client):
     @staticmethod
     def get_session_key():
         return '%sopenid' % SESSION_KEY
+        
+    @classmethod
+    def allow_signups(cls):
+        return ALLOW_OPENID_SIGNUPS

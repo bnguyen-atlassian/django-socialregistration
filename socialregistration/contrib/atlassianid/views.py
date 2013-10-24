@@ -4,6 +4,7 @@ from openid.consumer.consumer import DiscoveryFailure
 
 from socialregistration.contrib.openid.views import OpenIDRedirect, OpenIDCallback, OpenIDSetup
 from socialregistration.contrib.atlassianid.client import AtlassianIDClient
+from socialregistration.contrib.atlassianid.models import AtlassianIDProfile
 
 class AtlassianIDRedirect(OpenIDRedirect):
     client = AtlassianIDClient
@@ -28,6 +29,7 @@ class AtlassianIDRedirect(OpenIDRedirect):
         
 class AtlassianIDCallback(OpenIDCallback):
     client = AtlassianIDClient
+    profile = AtlassianIDProfile
     
     def get(self, request, *args):
         result = super(AtlassianIDCallback, self).get(request, *args)
@@ -40,4 +42,5 @@ class AtlassianIDCallback(OpenIDCallback):
     
 class AtlassianIDSetup(OpenIDSetup):
     client = AtlassianIDClient
+    profile = AtlassianIDProfile
     

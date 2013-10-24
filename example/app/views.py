@@ -6,6 +6,7 @@ from socialregistration.contrib.foursquare.models import FoursquareProfile
 from socialregistration.contrib.github.models import GithubProfile
 from socialregistration.contrib.instagram.models import InstagramProfile
 from socialregistration.contrib.linkedin.models import LinkedInProfile
+from socialregistration.contrib.openid.models import AtlassianIDProfile
 from socialregistration.contrib.openid.models import OpenIDProfile
 from socialregistration.contrib.tumblr.models import TumblrProfile
 from socialregistration.contrib.twitter.models import TwitterProfile
@@ -16,6 +17,7 @@ def index(request):
             facebook=FacebookProfile.objects.all(),
             twitter=TwitterProfile.objects.all(),
             openid=OpenIDProfile.objects.all(),
+            atlassianid=AtlassianIDProfile.objects.all(),
             linkedin=LinkedInProfile.objects.all(),
             github=GithubProfile.objects.all(),
             foursquare=FoursquareProfile.objects.all(),
